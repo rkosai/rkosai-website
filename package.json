@@ -1,0 +1,9 @@
+{
+  "name": "rkosai-website",
+  "version": "1.0.0",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-less": "^1.2.0"
+  }
+}
