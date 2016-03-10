@@ -1,5 +1,7 @@
 body {
-    background: #333;
+    background: #DBDBDB;
+    background-image: url(img/ecailles.png);
+    background-repeat: repeat;
     margin: 0;
     padding: 0;
     font-family: 'Lora', serif;
@@ -26,12 +28,14 @@ body {
     margin: 0 auto;
     background: #FFF;
     min-height: 100%;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 .c-hero {
     position: relative;
     overflow: hidden;
+    height: 700px;
+
     img {
         width: 1400px;
     }
@@ -79,6 +83,59 @@ body {
             }
         }
     }
+
+.c-about {
+    position: relative;
+    overflow: hidden;
+    height: 600px;
+
+    img {
+        width: 1400px;
+    }
+}
+
+    .c-about__header {
+        font-size: 24px;
+        position: absolute;
+        top: 100px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .c-about__text {
+        font-size: 16px;
+        box-sizing: border-box;
+        width: 750px;
+        left: ~"calc(50% - 375px)";
+        position: absolute;
+        line-height: 1.5;
+        top: 180px;
+
+        a {
+            color: #333;
+        }
+    }
+
+    .c-about__links {
+        top: 270px;
+        position: absolute;
+        width: 750px;
+        left: ~"calc(50% - 375px)";
+
+        a {
+            padding: 7px 12px;
+            background: #E0E0E0;
+            margin-right: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            color: #333;
+
+            &:hover {
+                background: #CCC;
+            }
+        }
+    }
+
 
 .c-content {
     box-sizing: border-box;
@@ -129,24 +186,20 @@ body {
 
    .o-job__title {
         font-weight: bold;
-        margin-bottom: 5px;
+        margin-bottom: 7px;
     }
 
     .o-job__company {
-        margin-bottom: 15px;
+        margin-bottom: 16px;
     }
 
     .o-job__desc {
         color: #666;
-        line-height: 1.4;
+        line-height: 1.5;
     }
 
-.o-para {
-    .o-section-contents;
-    color: #666;
-    line-height: 1.4;
-
-    img {
-        width: 30%;
-    }
+.c-separator {
+    height: 2px;
+    background: #CCC;
+    overflow:hidden;
 }
