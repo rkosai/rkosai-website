@@ -9,6 +9,10 @@ body {
     margin-bottom: 100px;
 }
 
+html, body {
+    font-size: 16px;
+}
+
 .u-clearfix {
     zoom: 1;
 
@@ -93,7 +97,7 @@ body {
         right: 125px;
 
         a {
-            font-size: 18px;
+            font-size: 1em;
             display: inline-block;
             margin-left: 15px;
             color: #555;
@@ -108,7 +112,7 @@ body {
 
 .c-about {
     overflow: hidden;
-    min-height: 600px;
+    height: 600px;
     position: relative;
 
     img {
@@ -124,9 +128,9 @@ body {
         padding-top: 30px;
 
         a {
-            padding: 7px 12px;
+            padding: 0.4em 0.6em;
             background: #E0E0E0;
-            margin-right: 10px;
+            margin-right: 0.5em;
             text-decoration: none;
             cursor: pointer;
             color: #333;
@@ -140,7 +144,7 @@ body {
 
 .c-content {
     box-sizing: border-box;
-    padding: 25px 75px 75px 75px;
+    padding: 1.5% 5% 5% 5%;
 
     &.o-overlay {
         position: relative;
@@ -150,22 +154,17 @@ body {
 
     .c-content__header {
         text-align: center;
-        font-size: 28px;
+        font-size: 2em;
         padding: 75px;
     }
 
-.c-content--alternative {
-    .c-content;
-    background: #EEE;
-}
-
 .c-content--footer {
-    padding: 50px;
+    padding: 3em;
     background: #444;
     text-align: center;
 
     a {
-        font-size: 28px;
+        font-size: 1.5em;
         text-decoration: none;
         color: #FFF;
     }
@@ -176,10 +175,10 @@ body {
 
     .o-grid__item {
         box-sizing: border-box;
-        width: 250px;
+        width: 22.5%;
         float: left;
-        margin-left: 50px;
-        margin-bottom: 50px;
+        margin-left: 2%;
+        margin-bottom: 2%;
 
         img {
             width: 100%;
@@ -187,7 +186,7 @@ body {
     }
 
 .o-section-contents {
-    font-size: 16px;
+    font-size: 1em;
     min-width: 500px;
     width: 60%;
     color: #666;
@@ -220,41 +219,39 @@ body {
 }
 
 .o-note {
-    padding-bottom: 30px;
+    padding-bottom: 2em;
 }
 
     .o-note__title {
         font-weight: bold;
-        padding-bottom: 30px;
+        padding-bottom: 2em;
     }
 
     .o-note__desc {
         font-style: italic;
         line-height: 1.5;
-        padding-bottom: 30px;
+        padding-bottom: 2em;
     }
 
     .o-note__counted {
-        margin-bottom: 15px;
+        margin-bottom: 1em;
     }
 
         .o-note__counted__num {
-            float: left;
-            width: 35px;
+            display: inline-block;
             text-align: center;
             box-sizing: border-box;
-            padding: 10px;
+            padding: 0.75em 1em;
             background: #EEE;
-            font-size: 12px;
+            font-size: 0.75em;
             font-weight: bold;
             color: #444;
         }
 
         .o-note__counted__text {
-            float: left;
-            margin-top: 7px;
-            width: ~"calc(100% - 70px)";
-            margin-left: 20px;
+            display: inline-block;
+            margin-top: 0.4em;
+            margin-left: 0.8em;
 
             a {
                 color: #555;

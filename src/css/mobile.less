@@ -1,48 +1,74 @@
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 965px) {
+
+    html, body {
+        font-size: 12px;
+    }
+
+    body {
+        margin-bottom: 5%;
+    }
 
     .o-container {
-        width: ~"calc(100% - 40px)";
+        width: ~"calc(100% - 30px)";
+        margin-top: 20px;
     }
 
     .c-topbar {
-        font-size: 24px;
+        a {
+            margin: 0;
+        }
     }
 
+    .c-content {
+        padding: 30px;
+    }
+
+        .c-content__header {
+            padding: 0;
+            padding-top: 15px;
+            padding-bottom: 30px;
+            font-size: 1.4em;
+        }
+
     .c-hero {
+        height: 60vw;
+        min-height: 250px;
         img {
             position: absolute;
-            left: -75px;
+            left: -85px;
+            height: 60vw;
+            min-height: 250px;
+            width: auto;
         }
     }
 
         .c-hero__title {
-            font-size: 60px;
-            left: 75px;
-            top: 230px;
+            font-size: 5vw;
+            left: 8vw;
+            top: 22vw;
         }
 
         .c-hero__subtitle {
-            font-size: 36px;
-            left: 75px;
-            top: 300px;
+            font-size: 2.5vw;
+            left: 8vw;
+            top: 28vw;
+            width: 30vw;
         }
 
     .c-about {
-        min-height: 940px;
+        height: 400px;
 
         img {
-            width: 2200px;
-            left: -650px;
+            height: 400px;
+            width: auto;
+            left: ~"calc((940px - 100%) / -2)";
         }
+
     }
 
         .c-about__links {
-        }
-
-    .c-content {}
-
-        .c-content__header, .c-about__header {
-            font-size: 28px;
+            padding-top: 25px;
+            font-size: 0.75em !important;
         }
 
     .o-grid__item {
@@ -52,15 +78,9 @@
 
     .o-section-contents {
         width: 100%;
-        font-size: 11px;
+        min-width: auto;
+        font-size: 1em;
     }
 
-    .o-note__counted {
-        font-size: 24px;
-    }
-
-        .o-note__counted__text {
-            margin-top: 3px;
-        }
 }
 
