@@ -1,0 +1,29 @@
+body {
+    background: #DBDBDB;
+    background-image: url(img/ecailles.png);
+    background-repeat: repeat;
+    margin: 0;
+    padding: 0;
+    font-family: 'Tinos', serif;
+    color: #333;
+    margin-bottom: 100px;
+}
+
+html, body {
+    font-size: 16px;
+}
+
+.u-clearfix {
+    zoom: 1;
+
+    &:before,&:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+
