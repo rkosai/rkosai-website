@@ -18,6 +18,10 @@ module.exports = function(grunt) {
                         dest: 'release/index.html'
                     },
                     {
+                        src: 'src/js/index.js',
+                        dest: 'release/index.js'
+                    },
+                    {
                         expand: true,
                         cwd: 'src/img/',
                         src: '**',
