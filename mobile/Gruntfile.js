@@ -4,6 +4,13 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         less: {
+            options : {
+                plugins : [
+                    new (require('less-plugin-autoprefix'))(
+                        {browsers : [ "last 2 versions" ]}
+                    )
+                ]
+            },
             build: {
                 files: {
                     "release/index.css": "src/css/*.less",
