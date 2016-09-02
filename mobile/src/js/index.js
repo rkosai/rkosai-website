@@ -14,10 +14,9 @@ function init() {
     handler.addEventListener(
         'touchstart',
         function(e) {
-            startPosition = y(e);
             e.preventDefault();
-        },
-        false
+            startPosition = y(e);
+        }
     );
 
     handler.addEventListener(
@@ -44,9 +43,7 @@ function init() {
 
             // Apply the correct frame
             container.className = "o-wrapper o-offset--" + currentFrame;
-            console.log(diff);
-        },
-        false
+        }
     );
 }
 
