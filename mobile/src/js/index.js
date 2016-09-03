@@ -1,89 +1,93 @@
-function Pagination (frame_count, container) {
+function Pagination (container, frame_count) {
     this.FRAME_COUNT = frame_count;
     this.container = container;
 
     // Create touch handler element
+    this.handler = this._createHandler();
+
+    // State variables
+    this.state = {
+        frame: 0,
+        scrollStart: 0,
+        offset: 0,
+    };
 
     // Attach listeners
+    this.handler.addEventListener('touchstart', this._startHandler.bind(this));
+    this.handler.addEventListener('touchmove', this._moveHandler.bind(this));
+    this.handler.addEventListener('touchend', this._endHandler.bind(this));
 }
 
+Pagination.prototype._createHandler = function() {
+    var elem = document.createElement('div');
+    elem.id = 'js-touch-handler';
+    elem.style.position = 'fixed';
+    elem.style.top = 0;
+    elem.style.bottom = 0;
+    elem.style.left = 0;
+    elem.style.right = 0;
+    elem.style.zIndex = 1;
 
-var FRAME_COUNT = 4;
+    document.body.appendChild(elem);
+    return elem;
+};
 
-function init() {
-    var handler = document.getElementsByClassName('js-touch-handler')[0];
-    var container = document.getElementsByClassName('o-wrapper')[0];
+Pagination.prototype._startHandler = function(e) {
+    e.preventDefault();
+    this.state.scrollStart = this._y(e);
 
-    var startPosition = null;
-    var currentFrame = 0;
-    var scrollOffset = 0;
-    var newNormal = 0;
+    // Disable CSS transitions while "scrolling"
+    this.container.style.transition = 'width 0s';
+};
 
-    var y = function(e) {
-        return e.changedTouches[0].screenY;
+Pagination.prototype._moveHandler = function(e) {
+    e.preventDefault();
+    var diff = this._y(e) - this.state.scrollStart;
+    this.container.style.top = (this.state.offset + diff) + 'px';
+};
+
+Pagination.prototype._endHandler = function(e) {
+    e.preventDefault();
+
+    // Re-enable transitions before auto-scrolling
+    this.container.style.transition = '0.5s ease-in-out';
+
+    // Calculate if the user swiped
+    var diff = this._y(e) - this.state.scrollStart;
+    this.state.offset += diff;
+
+    // If the user swiped far enough, advance the frame.
+    if (diff < -50) {
+        this.state.frame++;
+    }
+    else if (diff > 50) {
+        this.state.frame--;
     }
 
-    // Add touch events
-    handler.addEventListener(
-        'touchstart',
-        function(e) {
-            e.preventDefault();
-            startPosition = y(e);
+    // Keep the frame in bounds
+    if (this.state.frame < 0) {
+        this.state.frame = 0;
+    }
+    else if (this.state.frame >= this.FRAME_COUNT - 1) {
+        this.state.frame = this.FRAME_COUNT - 1;
+    }
 
-            // TBD
-            container.style.transition = 'width 0s';
-        }
-    );
+    // Apply the correct frame (could involve scrolling back to the last one)
+    var translate = null;
+    translate = -1 * this.state.frame * window.screen.height;
 
-    handler.addEventListener(
-        'touchmove',
-        function(e) {
-            console.log('touchmove');
-            e.preventDefault();
-            var diff = y(e) - startPosition;
-            scrollOffset = diff;
-            console.log(scrollOffset);
-            container.style.top = (newNormal + scrollOffset) + 'px';
-        }
-    );
+    // Adjust for scroll offset
+    translate -= this.state.offset;
 
-    handler.addEventListener(
-        'touchend',
-        function(e) {
-            e.preventDefault();
-            container.style.transition = '0.5s ease-in-out';
-            var diff = y(e) - startPosition;
-            var offset = null;
+    this.container.style.transform = 'translate3d(0, ' + translate + 'px, 0)'
+};
 
-            // If the user swiped, advance the frame.
-            if (diff < -50) {
-                currentFrame++;
-            }
-            else if (diff > 50) {
-                currentFrame--;
-            }
+Pagination.prototype._y = function(e) {
+    return e.changedTouches[0].screenY;
+};
 
-            // Keep the frame in bounds
-            if (currentFrame < 0) {
-                currentFrame = 0;
-            }
-            else if (currentFrame >= FRAME_COUNT - 1) {
-                currentFrame = FRAME_COUNT - 1;
-            }
+var p = new Pagination(
+    document.getElementsByClassName('o-wrapper')[0],
+    4
+);
 
-            // Apply the correct frame
-            offset = -1 * currentFrame * window.screen.height;
-
-            // Adjust for scroll offset
-            newNormal += scrollOffset;
-            offset -= newNormal;
-            scrollOffset = 0;
-            console.log(newNormal, offset);
-
-            container.style.transform = 'translate3d(0, ' + offset + 'px, 0)'
-            //container.className = "o-wrapper o-offset--" + currentFrame;
-        }
-    );
-}
-
-init();
