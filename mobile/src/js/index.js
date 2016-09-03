@@ -5,6 +5,9 @@ function Pagination (container, frame_count) {
     // Create touch handler element
     this.handler = this._createHandler();
 
+    // Measure the boundary height
+    this.HEIGHT = this.handler.getBoundingClientRect().height;
+
     // State variables
     this.state = {
         frame: 0,
@@ -74,7 +77,7 @@ Pagination.prototype._endHandler = function(e) {
 
     // Apply the correct frame (could involve scrolling back to the last one)
     var translate = null;
-    translate = -1 * this.state.frame * window.screen.height;
+    translate = -1 * this.state.frame * this.HEIGHT;
 
     // Adjust for scroll offset
     translate -= this.state.offset;
