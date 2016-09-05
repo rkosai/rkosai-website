@@ -62,7 +62,6 @@ h1 {
         background: rgba(255, 250, 235, 0.70);
         padding: 35px 20px;
         box-sizing: border-box;
-        max-width: 450px;
 
         h1 {
             margin-bottom: 10px;
@@ -107,11 +106,43 @@ h1 {
     }
 
     .o-section--three {
-        .o-section;
+        @media screen and (orientation:portrait) {
+            .o-section;
+        }
+        @media screen and (orientation:landscape) {
+            .o-section--flex;
+        }
 
-        background: url('./img/backgrounds/library.jpg');
-        background-position: center;
-        background-size: cover;
+
+        background: rgb(255, 250, 235);
+
+        .title {
+            padding: 30px 0;
+            @media screen and (orientation:landscape) {
+                padding-right: 20px;
+            }
+        }
+
+        .images {
+            text-align: center;
+
+            @media screen and (orientation:portrait) {
+                img {
+                    box-sizing: border-box;
+                    width: 45%;
+                    margin: 1%;
+                }
+            }
+
+            @media screen and (orientation:landscape) {
+                img {
+                    box-sizing: border-box;
+                    width: 30%;
+                    margin: 1%;
+                }
+            }
+
+        }
     }
 
     .o-section--four {
