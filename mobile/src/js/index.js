@@ -53,7 +53,7 @@ Pagination.prototype._endHandler = function(e) {
     e.preventDefault();
 
     // Re-enable transitions before auto-scrolling
-    this.container.style.transition = '0.5s ease-in-out';
+    this.container.style.transition = '0.4s ease-in-out';
 
     // Calculate if the user swiped
     var diff = this._y(e) - this.state.scrollStart;
@@ -84,6 +84,7 @@ Pagination.prototype._endHandler = function(e) {
 
     this.container.style.transform = 'translate3d(0, ' + translate + 'px, 0)'
 };
+
 
 Pagination.prototype._y = function(e) {
     return e.changedTouches[0].screenY;

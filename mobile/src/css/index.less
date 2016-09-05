@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    line-height: 1;
 }
 
 html {
@@ -11,11 +12,35 @@ html {
 
 body {
     height: 100%;
+    font-family: Tinos, serif;
+    font-size: 16px;
 }
 
 h1 {
-    font-family: Arial, Tahoma, sans-serif;
-    font-size: 22px;
+    text-align: center;
+
+    font-family: Qwigley, cursive;
+    font-size: 48px;
+    font-weight: normal;
+
+
+    .o-main {
+        font-family: Almendra, serif;
+        font-size: 48px;
+        font-weight: 700;
+    }
+
+    .o-minor {
+        font-family: Almendra, serif;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .o-script {
+        font-family: Qwigley, cursive;
+        font-size: 44px;
+        font-weight: normal;
+    }
 }
 
 .o-wrapper {
@@ -28,24 +53,70 @@ h1 {
 .o-section {
     height: (100% / @sections);
     width: 100%;
+    box-sizing: border-box;
+    padding: 30px;
 }
+
+    .o-section__wrapper {
+        text-align: center;
+        background: rgba(255, 250, 235, 0.70);
+        padding: 35px 20px;
+        box-sizing: border-box;
+        max-width: 450px;
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .o-text {
+            p {
+                line-height: 1.3;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .o-section--flex {
+        .o-section;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     .o-section--one {
         .o-section;
-        background: #AAA;
+        background: url('./img/backgrounds/airship.jpg');
+        background-position: 0 0;
+        background-size: cover;
+
+        h1 {
+            color: #222;
+            position: relative;
+            top: ~"calc(100% - 240px)";
+            width: 100%;
+            text-shadow: 0 0 40px rgb(255, 250, 235);
+        }
     }
 
     .o-section--two {
-        .o-section;
-        background: #CCC;
+        .o-section--flex;
+
+        background: url('./img/backgrounds/pen.jpg');
+        background-position: 0;
+        background-size: cover;
     }
 
     .o-section--three {
         .o-section;
-        background: #888;
+
+        background: url('./img/backgrounds/library.jpg');
+        background-position: center;
+        background-size: cover;
     }
 
     .o-section--four {
         .o-section;
-        background: #555;
+        background: url('./img/backgrounds/office.jpg');
+        background-position: center;
+        background-size: cover;
     }
