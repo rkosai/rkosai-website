@@ -6,7 +6,6 @@ function Pagination (container, frame_count) {
     this.handler = this._createHandler();
 
     // Measure the boundary height
-    this.HEIGHT = this.handler.getBoundingClientRect().height;
 
     // State variables
     this.state = {
@@ -19,6 +18,9 @@ function Pagination (container, frame_count) {
     this.handler.addEventListener('touchstart', this._startHandler.bind(this));
     this.handler.addEventListener('touchmove', this._moveHandler.bind(this));
     this.handler.addEventListener('touchend', this._endHandler.bind(this));
+
+    // Handle rotation
+    window.addEventListener('orientationchange', this._rotate.bind(this));
 }
 
 Pagination.prototype._createHandler = function() {
@@ -77,14 +79,34 @@ Pagination.prototype._endHandler = function(e) {
 
     // Apply the correct frame (could involve scrolling back to the last one)
     var translate = null;
-    translate = -1 * this.state.frame * this.HEIGHT;
+    var HEIGHT = this.handler.getBoundingClientRect().height;
+    translate = -1 * this.state.frame * HEIGHT;
 
     // Adjust for scroll offset
     translate -= this.state.offset;
 
-    this.container.style.transform = 'translate3d(0, ' + translate + 'px, 0)'
+    this.container.style.transform = 'translate3d(0, ' + translate + 'px, 0)';
 };
 
+Pagination.prototype._rotate = function(e) {
+    var page;
+    var self = this;
+
+    // Reset offsets
+    this.state.offset = 0;
+    this.container.style.top = '0';
+
+    var reset = function() {
+        var HEIGHT = self.handler.getBoundingClientRect().height;
+        page = -1 * self.state.frame * HEIGHT;
+
+        self.container.style.transition = 'width 0s';
+        self.container.style.transform = 'translate3d(0, ' + page + 'px, 0)';
+    };
+
+    reset();
+    window.setTimeout(reset, 100);
+};
 
 Pagination.prototype._y = function(e) {
     return e.changedTouches[0].screenY;
