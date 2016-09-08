@@ -59,8 +59,9 @@ h1 {
 
     .c-section__wrapper {
         text-align: center;
-        background: rgba(255, 250, 235, 0.70);
+        background: rgba(255, 250, 235, 0.75);
         padding: 35px 20px;
+        width: 100%;
         box-sizing: border-box;
 
         h1 {
@@ -83,12 +84,12 @@ h1 {
     }
 
     .c-section--one {
-        .c-section;
+        @media screen and (orientation:portrait) {
+            .c-section;
+        }
 
         @media screen and (orientation:landscape) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            .c-section--flex;
         }
 
         background: url('./img/backgrounds/airship.jpg');
@@ -118,7 +119,8 @@ h1 {
 
     .c-section--three {
         @media screen and (orientation:portrait) {
-            .c-section;
+            .c-section--flex;
+            flex-direction: column;
         }
         @media screen and (orientation:landscape) {
             .c-section--flex;
@@ -128,7 +130,7 @@ h1 {
         background: rgb(255, 250, 235);
 
         .o-title {
-            padding: 30px 0;
+            padding-bottom: 30px;
             @media screen and (orientation:landscape) {
                 padding-right: 20px;
             }
@@ -140,8 +142,8 @@ h1 {
             @media screen and (orientation:portrait) {
                 img {
                     box-sizing: border-box;
-                    width: 45%;
-                    margin: 1%;
+                    width: 46%;
+                    margin: 0.5%;
                 }
             }
 
@@ -149,7 +151,7 @@ h1 {
                 img {
                     box-sizing: border-box;
                     width: 30%;
-                    margin: 1%;
+                    margin: 0.5%;
                 }
             }
 
@@ -157,8 +159,28 @@ h1 {
     }
 
     .c-section--four {
-        .c-section;
+        .c-section--flex;
+
         background: url('./img/backgrounds/office.jpg');
         background-position: center;
         background-size: cover;
+
+        .o-email {
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            padding-bottom: 25px;
+            color: #333;
+            font-size: 22px;
+        }
+
+        .o-btn {
+            display: block;
+            margin: 10px auto;
+            padding: 20px;
+            width: 70%;
+            background: #876;
+            color: #FFF;
+            text-decoration: none;
+        }
     }
