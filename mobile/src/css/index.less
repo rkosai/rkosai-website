@@ -170,22 +170,45 @@ h1 {
         background-position: center;
         background-size: cover;
 
-        .o-email {
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            padding-bottom: 25px;
-            color: #333;
-            font-size: 22px;
+        .c-section__wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @media screen and (orientation:portrait) {
+                flex-direction: column;
+            }
+
+            @media screen and (orientation:landscape) {
+                padding:15px;
+            }
+
         }
 
-        .o-btn {
-            display: block;
-            margin: 10px auto;
-            padding: 20px;
-            width: 70%;
-            background: #876;
-            color: #FFF;
-            text-decoration: none;
+        .o-title {
+            width: 100%;
+
+            .o-email {
+                text-decoration: none;
+                display: block;
+                padding: 10px;
+                padding-bottom: 25px;
+                color: #333;
+                font-size: 22px;
+            }
+        }
+
+        .o-text {
+            width: 100%;
+
+            .o-btn {
+                display: block;
+                margin: 10px auto;
+                padding: 20px;
+                width: 70%;
+                background: #876;
+                color: #FFF;
+                text-decoration: none;
+            }
         }
     }
