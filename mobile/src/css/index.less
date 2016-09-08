@@ -84,6 +84,13 @@ h1 {
 
     .o-section--one {
         .o-section;
+
+        @media screen and (orientation:landscape) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         background: url('./img/backgrounds/airship.jpg');
         background-position: 0 0;
         background-size: cover;
@@ -92,6 +99,10 @@ h1 {
             color: #222;
             position: relative;
             top: ~"calc(100% - 240px)";
+            @media screen and (orientation:landscape) {
+                top: 0;
+            }
+
             width: 100%;
             text-shadow: 0 0 40px rgb(255, 250, 235);
         }
