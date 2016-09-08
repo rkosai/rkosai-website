@@ -62,11 +62,23 @@ Pagination.prototype._endHandler = function(e) {
     this.state.offset += diff;
 
     // If the user swiped far enough, advance the frame.
-    if (diff < -50) {
+    if (diff < -25) {
         this.state.frame++;
     }
-    else if (diff > 50) {
+    else if (diff > 25) {
         this.state.frame--;
+    }
+
+    // Otherwise, register it as a click
+    else {
+        var elements = document.elementsFromPoint(
+            e.changedTouches[0].clientX,
+            e.changedTouches[0].clientY
+        );
+
+        var ev = document.createEvent('MouseEvents');
+        ev.initEvent('click', true, false);
+        elements[1].dispatchEvent(ev);
     }
 
     // Keep the frame in bounds
