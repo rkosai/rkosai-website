@@ -71,14 +71,10 @@ Pagination.prototype._endHandler = function(e) {
 
     // Otherwise, register it as a click
     else {
-        var elements = document.elementsFromPoint(
+        this._handleClick(
             e.changedTouches[0].clientX,
             e.changedTouches[0].clientY
         );
-
-        var ev = document.createEvent('MouseEvents');
-        ev.initEvent('click', true, false);
-        elements[1].dispatchEvent(ev);
     }
 
     // Keep the frame in bounds
@@ -99,6 +95,20 @@ Pagination.prototype._endHandler = function(e) {
 
     this.container.style.transform = 'translate3d(0, ' + translate + 'px, 0)';
 };
+
+Pagination.prototype._handleClick = function(x, y) {
+    // Temporarily hide the click handler
+    this.handler.style.display = 'none';
+
+    // Find the element and click on it
+    var element = document.elementFromPoint(x, y);
+    var ev = document.createEvent('MouseEvents');
+    ev.initEvent('click', true, false);
+    element.dispatchEvent(ev);
+
+    // Restore the click handler
+    this.handler.style.display = 'block';
+}
 
 Pagination.prototype._rotate = function(e) {
     var page;
